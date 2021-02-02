@@ -9,10 +9,7 @@ const food = {
   },
   update(objColVals, condition, cb) {
     orm.update('foods', objColVals, condition, (res) => cb(res));
-  },
-  delete(condition, cb) {
-    orm.delete('foods', condition, (res) => cb(res));
-  },
+  }
 };
 
 module.exports = food;

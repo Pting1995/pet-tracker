@@ -11,8 +11,8 @@ const food = {
         cb(res);
     })
   },
-  update: function(objColVals, condition, cb) {
-    orm.update('foods', objColVals, condition, (res) => {
+  update: function(condition, cb) {
+    orm.update('foods', condition, (res) => {
         cb(res);
     })
   }

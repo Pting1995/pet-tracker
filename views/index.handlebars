@@ -14,9 +14,11 @@
 
 <ul>
   {{#each food}} 
-    {{#if eaten}}
-      {{> foods/food-block eaten=false}}
-    {{/if}}
+      {{#if eaten}}
+        <li>
+          {{ name }}
+        </li>
+      {{/if}}
   {{/each}}
 </ul>
 
@@ -30,8 +32,8 @@
 
   <div class="form-group">
     <label for="eaten">Have you eaten it?</label><br>
-    <input type="radio" name="eaten" value="0" checked> Not Consumed<br>
-    <input type="radio" name="eaten" value="1"> Has been eaten!
+    <input type="radio" name="eaten" value="0" checked> Not Consumed (yet)<br>
+    <input type="radio" name="eaten" value="1"> I've eaten that!
   </div>
 
   <button type="submit">Add Food</button>

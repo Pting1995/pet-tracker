@@ -25,18 +25,12 @@ router.post('/api/food', (req, res) => {
 // update food
 router.put('/api/food/:id', (req, res) => {
     var condition = `id = ${req.params.id}`;
-    food.update(
-        {
-            eaten: req.body.eaten,
-        },
-        condition,
-        (result) => {
-            if (result.changedRows === 0) {
-                return res.status(404).end();
-            }
-            res.status(200).end();
+    food.update(condition, (result) => {
+        if (result.changedRows === 0) {
+            return res.status(404).end();
         }
-    );
+        res.status(200).end();
+    });
 });
 
 module.exports = router;

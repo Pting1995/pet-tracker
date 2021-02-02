@@ -10,67 +10,33 @@ const printQuestionMarks = (num) => {
     return arr.toString();
 };
 
-function objToSql(obj) {
-    const arr = [];
-    // console.log(Object.keys(obj).length)
-    // console.log(Object.keys(obj))
-    // console.log(Object.values(obj))
-
-    var key = Object.keys(obj)
-
-    var values = Object.values(obj)
-
-    for (i = 0; i < Object.keys(obj).length; i++) {
-        var string = `${key[i]}='${values[i]}'`
-        // console.log(string)
-        arr.push(string)
-    }
-    return arr.toString();
-
-}
-
 const orm = {
     all(table, cb) {
         const queryString = `SELECT * FROM ${table};`;
         connection.query(queryString, (err, result) => {
-            if (err) {
-                throw err;
-            }
+            if (err) throw err;
+
             cb(result);
         });
     },
     create(table, cols, vals, cb) {
-        let queryString = `INSERT INTO ${table}`;
-
-        queryString += ' (';
-        queryString += cols.toString();
-        queryString += ') ';
-        queryString += 'VALUES (';
-        queryString += printQuestionMarks(vals.length);
-        queryString += ') ';
-        console.log(queryString);
+        var colString = cols.toString()
+        var questionMarks = printQuestionMarks(vals.length)
+        let queryString = `INSERT INTO ${table} (${colString}) VALUES (${questionMarks})`;
 
         connection.query(queryString, vals, (err, result) => {
-            if (err) {
-                throw err;
-            }
-
+            if (err) throw err;
+            
             cb(result);
         });
     },
-    update(table, objColVals, condition, cb) {
-        let queryString = `UPDATE ${table}`;
+    update(table, condition, cb) {
 
-        queryString += ' SET ';
-        queryString += objToSql(objColVals);
-        queryString += ' WHERE ';
-        queryString += condition;
+        let queryString = `UPDATE ${table} SET eaten = 1 WHERE ${condition}`;
 
         console.log(queryString);
         connection.query(queryString, (err, result) => {
-            if (err) {
-                throw err;
-            }
+            if (err) throw err;
 
             cb(result);
         });

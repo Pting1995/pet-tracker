@@ -1,12 +1,13 @@
-const express = require('express');
+var express = require('express');
 
-const router = express.Router();
+var router = express.Router();
 
-const food = require('../models/food.js');
+var food = require('../models/food.js');
 
+// get existing food
 router.get('/', (req, res) => {
     food.all((data) => {
-        const foodObj = {
+        var foodObj = {
             food: data,
         };
         console.log(foodObj);
@@ -14,14 +15,16 @@ router.get('/', (req, res) => {
     });
 });
 
+// new food
 router.post('/api/food', (req, res) => {
     food.create(['name', 'eaten'], [req.body.name, req.body.eaten], (result) => {
         res.json({ id: result.insertId });
     });
 });
 
+// update food
 router.put('/api/food/:id', (req, res) => {
-    const condition = `id = ${req.params.id}`;
+    var condition = `id = ${req.params.id}`;
     food.update(
         {
             eaten: req.body.eaten,

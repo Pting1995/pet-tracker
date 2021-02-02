@@ -1,7 +1,7 @@
 <li>
 	{{name}}
 
-	<button class="eaten" data-id="{{id}}" data-neweaten="{{eaten}}">
-		{{#unless eaten}}I have eaten this!{{/if}}
+	<button class="eat" data-id="{{id}}" data-eat="{{eaten}}">
+		{{#if eaten}}SLEEP TIME!{{else}}WAKE UP!{{/if}}
 	</button>
 </li>

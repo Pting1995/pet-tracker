@@ -1,0 +1,17 @@
+h1 {
+    text-align: center;
+}
+
+h4 {
+    text-align: center;
+}
+
+.card {
+    margin: 10px;
+    background-color: lightcyan;
+}
+
+.eat {
+    position: absolute;
+    right: 10px;
+}

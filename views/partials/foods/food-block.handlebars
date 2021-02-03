@@ -1,7 +1,9 @@
-<li>
-	{{name}}
-
-	<button class="eat" data-id="{{id}}" data-eat="{{eaten}}">
-		{{#if eaten}}I ate this!{{/if}}
-	</button>
-</li>
+<div class="card">
+	<div class="card-body">
+		<button type="button" class="btn btn-outline-success eat" data-id="{{id}}" data-eat="{{eaten}}">
+			{{#if eaten}}I ate this!{{/if}}
+		</button>
+		<h5 class="card-title">{{name}}</h4>
+		
+	</div>
+</div>

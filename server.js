@@ -15,7 +15,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 
-var routes = require("./controllers/foodController.js");
+var routes = require("./controllers/foodcontroller.js");
 
 app.use(routes);
 
